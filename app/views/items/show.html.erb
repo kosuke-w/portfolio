@@ -1,2 +1,70 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<h1>MY ITEM</h1>
+
+<div>
+  <%= attachment_image_tag @item, :image, :fill, 200, 200, fallback: 'noImage.jpg', size:'300x300' %>
+</div>
+<div>
+  <div>
+    <label>アイテム名</label>
+    <div>
+      <%= @item.name %>
+    </div>
+  </div>
+  <div>
+    <label>ジャンル</label>
+    <div>
+      <%= @item.genre %>
+    </div>
+  </div>
+  <div>
+    <label>カラー</label>
+    <div>
+      <%= @item.color %>
+    </div>
+  </div>
+  <div>
+    <label>購入時価格</label>
+    <div>
+      <% if @item.price.blank? %>
+        <P>未設定</P>
+      <% else %>
+        <%= @item.price.to_s(:delimited) %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <label>ブランド名</label>
+    <div>
+      <% if @item.brand.blank? %>
+        <P>未設定</P>
+      <% else %>
+        <%= @item.brand %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <label>コメント</label>
+    <div>
+      <% if @item.caption.blank? %>
+        <P>未設定</P>
+      <% else %>
+        <%= @item.caption %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <label>最終着用日</label>
+    <div>
+      <% if @item.last_worn_day.blank? %>
+        <P>まだ着ていません</P>
+      <% else %>
+        <%= @item.last_worn_day %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div>
+  <%= link_to '編集する', edit_item_path(@item.id), class:'btn' %>
+  <%= link_to '削除する', item_path(@item.id), method: :delete, class:'btn', data: { confirm: '削除しますか？' } %>
+</div>

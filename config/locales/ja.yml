@@ -1,0 +1,25 @@
+ja:
+  enums:
+    item:
+      genre:
+        outer: 'アウター'
+        tops: 'トップス'
+        inner: 'インナー'
+        bottoms: 'ボトムス'
+        shoes: 'シューズ'
+        others: 'その他'
+
+ja:
+  enums:
+    item:
+      color:
+        beige: 'ベージュ'
+        blue: 'ブルー'
+        green: 'グリーン'
+        yellow: 'イエロー'
+        red: 'レッド'
+        purple: 'パープル'
+        brown: 'ブラウン'
+        grey: 'グレー'
+        black: 'ブラック'
+        white: 'ホワイト'

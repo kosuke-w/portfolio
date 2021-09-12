@@ -1,2 +1,49 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1>MY ITEMS</h1>
+<h3>アイテム登録</h3>
+
+<%= form_with model: @item, url: items_path, local:true do |f| %>
+  <div>
+    <label>アイテム画像</label>
+    <div>
+      <%= f.attachment_field :image %>
+    </div>
+  </div>
+  <div>
+    <label>アイテム名</label>
+    <div>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  <div>
+    <label>ジャンル</label>
+    <div>
+      <%= f.select :genre, options_for_select(Item.genres), {prompt: '選択してください'} %>
+    </div>
+  </div>
+  <div>
+    <label>カラー</label>
+    <div>
+      <%= f.select :color, options_for_select(Item.colors), {prompt: '選択してください'} %>
+    </div>
+  </div>
+  <div>
+    <label>購入時価格</label>
+    <div>
+      <%= f.text_field :price %>
+    </div>
+  </div>
+  <div>
+    <label>ブランド名</label>
+    <div>
+      <%= f.text_field :brand %>
+    </div>
+  </div>
+  <div>
+    <label>コメント</label>
+    <div>
+      <%= f.text_area :caption %>
+    </div>
+  </div>
+
+  <%= f.submit '登録' %>
+<% end %>
