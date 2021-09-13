@@ -39,7 +39,7 @@ class CoordinatesController < ApplicationController
 
   private
   def coordinate_params
-    params.require(:coordinate).permit(:user_id, :comment, :season, { :item_ids=> [] }).merge(season: params[:coordinate][:season].to_i)
+    params.require(:coordinate).permit(:user_id, :comment, :season, { :item_ids=> [] })
   end
 
 end

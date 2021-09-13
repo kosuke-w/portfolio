@@ -1,2 +1,14 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>質問・相談</h1>
+
+<div>
+  <% @posts.each do |post_text| %>
+    <div>
+      <%= link_to post_path(post_text.id) do %>
+        <%= post_text.title %>
+      <% end %>
+      <%= post_text.user.name %>
+      <%= attachment_image_tag post_text, :image, :fill, 30, 30 %>
+      <%= post_text.text %>
+    </div>
+  <% end %>
+</div>

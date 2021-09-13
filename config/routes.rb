@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :items
   resources :coordinates
   resources :posts, except: [:edit, :update] do
-    resources :post_comments, only: [:creste, :destroy]
+    resources :post_comments, only: [:create, :destroy]
   end
 
 

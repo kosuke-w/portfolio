@@ -17,13 +17,13 @@
   <div>
     <label>ジャンル</label>
     <div>
-      <%= f.select :genre, options_for_select(Item.genres) %>
+      <%= f.select :genre, Item.genres.keys %>
     </div>
   </div>
   <div>
     <label>カラー</label>
     <div>
-      <%= f.select :color, options_for_select(Item.colors) %>
+      <%= f.select :color, Item.colors.keys %>
     </div>
   </div>
   <div>

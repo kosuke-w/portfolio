@@ -10,7 +10,7 @@
 <div>
   <label>シーズン</label>
   <div>
-    <%= f.select :season, options_for_select(Coordinate.seasons), {prompt: '選択してください'} %>
+    <%= f.select :season, Coordinate.seasons.keys, {prompt: '選択してください'} %>
   </div>
 </div>
 

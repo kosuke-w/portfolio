@@ -1,2 +1,27 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>質問・相談</h1>
+
+<div>
+  <%= form_with model: @post, url: posts_path, local:true do |f| %>
+  <div>
+    <label>タイトル</label>
+    <div>
+      <%= f.text_field :title %>
+    </div>
+  </div>
+  <div>
+    <label>本文</label>
+    <div>
+      <%= f.text_field :text %>
+    </div>
+  </div>
+  <div>
+    <label>画像を添付</label>
+    <div>
+      <%= f.attachment_field :image %>
+    </div>
+  </div>
+  <div>
+    <%= f.submit '投稿する' %>
+  </div>
+  <% end %>
+</div>

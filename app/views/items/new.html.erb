@@ -17,13 +17,13 @@
   <div>
     <label>ジャンル</label>
     <div>
-      <%= f.select :genre, options_for_select(Item.genres), {prompt: '選択してください'} %>
+      <%= f.select :genre, Item.genres.keys, {prompt: '選択してください'} %>
     </div>
   </div>
   <div>
     <label>カラー</label>
     <div>
-      <%= f.select :color, options_for_select(Item.colors), {prompt: '選択してください'} %>
+      <%= f.select :color, Item.colors.keys, {prompt: '選択してください'} %>
     </div>
   </div>
   <div>

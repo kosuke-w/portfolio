@@ -10,7 +10,7 @@
 <div>
   <label>シーズン</label>
   <div>
-    <%= f.select :season, options_for_select(Coordinate.seasons) %>
+    <%= f.select :season, Coordinate.seasons.keys %>
   </div>
 </div>
 

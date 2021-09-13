@@ -1,2 +1,32 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1>質問・相談</h1>
+
+<div>
+  <%= @post.title %>
+  <%= @post.user.name %>
+  <%= @post.user.sex %>
+  <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+  <%= attachment_image_tag @post, :image, :fill, 100, 100 %>
+  <%= @post.text %>
+  <% if @post.user == current_user %>
+    <%= link_to '削除する', post_path(@post.id), 'data-confirm' => '本当に削除しますか？' %>
+  <% end %>
+</div>
+
+<div>
+  <% @post_comments.each do |post_comment| %>
+    <%= post_comment.user.name %>
+    <%= post_comment.user.sex %>
+    <%= post_comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+    <%= post_comment.comment %>
+    <% if post_comment.user == current_user %>
+      <%= link_to '削除する', post_post_comment_path(post_comment.id), 'data-confirm' => '本当に削除しますか？' %>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with(model:[@post, @post_comment], local:true) do |f| %>
+    <%= f.text_field :comment %>
+    <%= f.submit 'コメントする' %>
+  <% end %>
+</div>
