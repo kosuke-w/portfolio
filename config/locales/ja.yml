@@ -5,7 +5,7 @@ ja:
         outer: 'アウター'
         tops: 'トップス'
         inner: 'インナー'
-        bottoms: 'ボトムス'
+        pants: 'パンツ'
         shoes: 'シューズ'
         others: 'その他'
 
@@ -23,3 +23,26 @@ ja:
         grey: 'グレー'
         black: 'ブラック'
         white: 'ホワイト'
+
+ja:
+  enums:
+    coordinate:
+      season:
+        spring: '春'
+        summer: '夏'
+        autumn: '秋'
+        winter: '冬'
+
+ja:
+  enums:
+    user:
+      sex:
+        man: '男性'
+        woman: '女性'
+
+ja:
+  enums:
+    user:
+      is_active:
+        available: '有効'
+        invalid: '退会'

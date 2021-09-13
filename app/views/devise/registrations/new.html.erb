@@ -19,6 +19,11 @@
     <%= f.label :sex, '女性' %><br />
     <%= f.radio_button :sex, :false %>
   </div>
+  
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.select :address, options_for_select(User.addresses), {prompt: '選択してください'} %>
+  </div>
 
   <div class="field">
     <%= f.label :password %>

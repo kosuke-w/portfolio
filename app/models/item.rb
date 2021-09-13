@@ -1,12 +1,13 @@
 class Item < ApplicationRecord
 
   belongs_to :user
-  belongs_to :coordinate, optional: true
+  has_many :registered_items, dependent: :destroy
+  has_many :coordinates, through: :registered_items
 
   attachment :image
 
   enum genre: {
-    アウター: 0, トップス: 1, インナー: 2, ボトムス: 3, シューズ: 4, その他: 5
+    アウター: 0, トップス: 1, インナー: 2, パンツ: 3, シューズ: 4, その他: 5
   }
 
   enum color: {

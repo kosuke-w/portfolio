@@ -1,0 +1,24 @@
+<h1>MY COORDINATES</h1>
+<h3>コーディネート登録</h3>
+
+<%= form_with model: @coordinate, url: coordinates_path, local:true do |f| %>
+  <% @items.each do |item| %>
+    <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+    <%= f.check_box :item_ids, { multiple: true, include_hidden: false}, item[:id] %>
+  <% end %>
+
+<div>
+  <label>シーズン</label>
+  <div>
+    <%= f.select :season, options_for_select(Coordinate.seasons), {prompt: '選択してください'} %>
+  </div>
+</div>
+
+<div>
+  <label>コメント</label>
+  <div>
+    <%= f.text_area :comment %>
+  </div>
+</div>
+<%= f.submit '登録' %>
+<% end %>

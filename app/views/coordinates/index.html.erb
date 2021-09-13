@@ -1,2 +1,15 @@
-<h1>Coordinates#index</h1>
-<p>Find me in app/views/coordinates/index.html.erb</p>
+<h1>MY COORDINATES</h1>
+
+<% @coordinates.each do |coordinate| %>
+<div>
+  <%= link_to coordinate_path(coordinate.id) do %>
+    <h3>Coordinate <%= coordinate.id %></h3>
+  <% end %>
+  <% coordinate.registered_items.each do |registered_item| %>
+    <%= attachment_image_tag registered_item.item, :image, :fill, 100, 100 %>
+    <%= registered_item.item.name %>
+  <% end %>
+  <%= coordinate.season %>
+  <%= coordinate.comment %>
+</div>
+<% end %>

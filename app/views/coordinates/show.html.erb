@@ -1,2 +1,33 @@
-<h1>Coordinates#show</h1>
-<p>Find me in app/views/coordinates/show.html.erb</p>
+<h1>MY COORDINATE</h1>
+<h3>コーディネート詳細</h3>
+
+<div>
+  <label>登録アイテム</label>
+  <div>
+    <% @coordinate.registered_items.each do |registered_item| %>
+      <%= link_to item_path(registered_item.item.id) do %>
+        <%= attachment_image_tag registered_item.item, :image, :fill, 100, 100 %>
+      <% end %>
+      <%= registered_item.item.name %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <div>
+    <label>シーズン</label>
+    <div>
+      <%= @coordinate.season %>
+    </div>
+  </div>
+  <div>
+    <label>コメント</label>
+    <div>
+      <%= @coordinate.comment %>
+    </div>
+  </div>
+  <div>
+    <%= link_to '編集する', edit_coordinate_path(@coordinate.id) %>
+    <%= link_to '削除する', coordinate_path(@coordinate.id), method: :delete, class:'btn', data: { confirm: '削除しますか？' } %>
+  </div>
+</div>
