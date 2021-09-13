@@ -10,22 +10,32 @@
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-        <li>
-          <%= link_to "マイページ", users_my_page_path(current_user.id) %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
-        </li>
-      <% end %>
+    <header class='border-bottom border-dark'>
+      <div class='container-fluid col-lg-12 clearfix d-flex'>
+        <div class='row'>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo.png', size: '140x140', class: 'ml-5' %>
+          <% end %>
+        </div>
+        <nav class='nav navbar navbar-expand-lg ml-auto'>
+          <div class='row'>
+            <% if user_signed_in? %>
+            <ul class='navbar-nav'>
+              <li><%= link_to "My page", users_my_page_path(current_user.id), class: 'nav-text nav-link text-dark btn btn-outline-primary ml-3' %></li>
+              <li><%= link_to "My item", items_path, class: 'nav-text nav-link text-dark btn btn-outline-primary ml-3' %></li>
+              <li><%= link_to "My coorde", coordinates_path, class: 'nav-text nav-link text-dark btn btn-outline-primary ml-3' %></li>
+              <li><%= link_to "Posts", posts_path, class: 'nav-text nav-link text-dark btn btn-outline-primary ml-3' %></li>
+              <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-text nav-link text-dark btn btn-outline-primary ml-3' %></li>
+            </ul>
+            <% else %>
+            <ul class='navbar-nav'>
+              <li><%= link_to "Sign up", new_user_registration_path, class: 'nav-text nav-link text-dark btn btn-outline-primary ml-3' %></li>
+              <li><%= link_to "Log in", new_user_session_path, class: 'nav-text nav-link text-dark btn btn-outline-primary ml-3' %></li>
+            </ul>
+            <% end %>
+          </div>
+        </nav>
+      </div>
     </header>
     <main>
       <%= yield %>
