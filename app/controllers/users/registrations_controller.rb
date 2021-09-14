@@ -67,7 +67,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   private
   def sign_up_params
-    params.require(:user).permit(:name, :image_id, :sex, :introduction, :email, :password, :address, :is_active).merge(adress: params[:user][:address].to_i, sex: params[:user][:sex].to_i)
+    params.require(:user).permit(:name, :image_id, :sex, :introduction, :email, :password, :address, :is_active)
   end
 
 end

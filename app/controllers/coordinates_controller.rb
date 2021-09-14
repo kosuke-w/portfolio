@@ -1,7 +1,7 @@
 class CoordinatesController < ApplicationController
 
   def new
-    @items = Item.all
+    @items = Item.where(user_id: current_user.id)
     @coordinate = Coordinate.new
   end
 
@@ -13,7 +13,7 @@ class CoordinatesController < ApplicationController
   end
 
   def index
-    @coordinates = Coordinate.all
+    @coordinates = Coordinate.where(user_id: current_user.id)
   end
 
   def show

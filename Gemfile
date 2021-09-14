@@ -73,3 +73,6 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'pry-byebug'
 
 gem 'enum_help'
+
+gem 'dotenv-rails'
+gem 'gon'
