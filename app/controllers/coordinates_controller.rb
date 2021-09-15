@@ -14,6 +14,7 @@ class CoordinatesController < ApplicationController
 
   def index
     @coordinates = Coordinate.where(user_id: current_user.id)
+    @record = Record.new
   end
 
   def show

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'users/unsubscribe' => 'users#unsubscribe'
   patch 'users/withdraw' => 'users#withdraw'
 
-
+  resources :records, only: [:create]
   resources :users
   resources :items
   resources :coordinates

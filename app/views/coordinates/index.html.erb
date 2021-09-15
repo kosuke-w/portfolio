@@ -11,5 +11,10 @@
   <% end %>
   <%= coordinate.season %>
   <%= coordinate.comment %>
+
+  <%= form_with model: @record, url: records_path, local:true do |f| %>
+    <%= f.hidden_field :coordinate_id, :value => coordinate.id %>
+    <%= f.submit '今日着た' %>
+  <% end %>
 </div>
 <% end %>

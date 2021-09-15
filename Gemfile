@@ -76,3 +76,5 @@ gem 'enum_help'
 
 gem 'dotenv-rails'
 gem 'gon'
+
+gem "simple_calendar", "~> 2.0"

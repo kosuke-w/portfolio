@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
+    
+    @records = Record.all
 
     gon.push({
     :address => @user.address,
@@ -16,13 +18,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to users_my_page_path(current_user.id)
-
-
-    # gom.push({
-    #   :address => @user.address,
-    #   :apikey => ENV['OPEN_WEATHER_MAP_API']
-    # })
-    # gom.address
   end
 
   private
