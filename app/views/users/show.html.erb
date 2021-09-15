@@ -1,44 +1,50 @@
-<div>
-  <%= attachment_image_tag @user, :image, :fill, 100, 100, class: 'rounded-circle', fallback: 'noImage.jpg', size:'300x300' %>
-  <div>
-    <label>ユーザー名</label>
-    <div>
-      <%= @user.name %>
+<div class='container col-lg-10 d-flex mt-5'>
+  <div class='container mr-5 profile pt-3 pb-5 col-lg-4'>
+    <div class='row justify-content-center mb-5'>
+      <%= attachment_image_tag @user, :image, :fill, 100, 100, class: 'rounded-circle', fallback: 'noImage.jpg', size:'300x300' %>
+    </div>
+    <div class='row justify-content-center'>
+      <label class='col-lg-3 text-center'>ユーザー名</label>
+      <div>
+        <%= @user.name %>
+      </div>
+    </div>
+    <div class='row justify-content-center'>
+      <label class='col-lg-3 text-center'>性別</label>
+      <div>
+        <%= @user.sex %>
+      </div>
+    </div>
+    <div class='row justify-content-center'>
+      <label class='col-lg-3 text-center'>住まい</label>
+      <div>
+        <%= @user.address %>
+      </div>
+    </div>
+    <div class='row justify-content-center mt-3'>
+      <%= @user.introduction %>
+    </div>
+    <div class='row justify-content-center mt-5'>
+      <%= link_to '編集する', edit_user_path(@user.id), class: 'btn btn-primary mr-5' %>
+      <%= link_to '退会する', users_unsubscribe_path(@user.id), class: 'btn btn-danger' %>
     </div>
   </div>
-  <div>
-    <label>性別</label>
-    <div>
-      <%= @user.sex %>
-    </div>
-  </div>
-  <div>
-    <label>住まい</label>
-    <div>
-      <%= @user.address %>
-    </div>
-  </div>
-  <div>
-    <%= @user.introduction %>
-  </div>
-  <div>
-    <%= link_to '編集する', edit_user_path(@user.id) %>
-    link_to '退会する'
-  </div>
-</div>
 
-<div class="weather d-flex">
-  <h3 class="weather__title">天気予報</h3>
-  <div class='d-inline-flex', id="weather"></div>
-</div>
+  <div class='container ml-5'>
+    <div class="weather mb-3">
+      <h3 class="weather__title text-center">天気予報</h3>
+      <div class='d-inline-flex', id="weather"></div>
+    </div>
 
-<div class='container'>
-  <%= month_calendar events: @records do |date, records| %>
-    <%= date.day %>
-    <% records.each do |record| %>
-      <% record.coordinate.registered_items.each do |registered_item| %>
-        <%= attachment_image_tag registered_item.item, :image, :fill, 30, 30 %>
+    <div class='container'>
+      <%= month_calendar events: @records do |date, records| %>
+        <%= date.day %>
+        <% records.each do |record| %>
+          <% record.coordinate.registered_items.each do |registered_item| %>
+            <%= attachment_image_tag registered_item.item, :image, :fill, 30, 30 %>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
+    </div>
+  </div>
 </div>
