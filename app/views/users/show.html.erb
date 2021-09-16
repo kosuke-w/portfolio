@@ -25,7 +25,7 @@
       <%= @user.introduction %>
     </div>
     <div class='row justify-content-center mt-5'>
-      <%= link_to '編集する', edit_user_path(@user.id), class: 'btn btn-primary mr-5' %>
+      <%= link_to '編集する', edit_user_path(@user.id), class: 'btn btn-warning mr-5' %>
       <%= link_to '退会する', users_unsubscribe_path(@user.id), class: 'btn btn-danger' %>
     </div>
   </div>

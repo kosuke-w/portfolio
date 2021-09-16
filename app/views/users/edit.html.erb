@@ -1,50 +1,53 @@
-<h1>PROFILE</h1>
-<h3>ユーザー情報の編集</h3>
+<div class='container mt-5 col-lg-8 mb-5 title pb-1'>
+  <h1 class='font main-text text-center'>PROFILE</h1>
+  <h4 class='font text-center text-light'>ユーザー情報の編集</h4>
+</div>
 
-<%= form_with model: @user, url: user_path(current_user.id), local:true do |f| %>
-
-  <div class="field">
-    <label>アイコン</label>
-    <div>
+<div class='container form-horizontal'>
+  <%= form_with model: @user, url: user_path(current_user.id), local:true do |f| %>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>アイコン</label>
+    <div class='col-lg-3 field'>
       <%= f.attachment_field :image %>
     </div>
   </div>
-
-  <div class="field">
-    <label>名前（ニックネーム）</label>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-
-  <div class="field">
-    <label>メールアドレス</label>
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <label>性別</label>
-    <div>
-      <%= f.radio_button :sex, User.sexes.key(0) %>
-      <%= f.label :sex, '男性' %>
-      <%= f.radio_button :sex, User.sexes.key(1) %>
-      <%= f.label :sex, '女性' %>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>名前（ニックネーム）</label>
+    <div class='col-lg-3 field'>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
     </div>
   </div>
-
-  <div class="field">
-    <label>住まい</label>
-    <div>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>メールアドレス</label>
+    <div class='col-lg-3 field'>
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+  </div>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>性別</label>
+    <div class='col-lg-3 field'>
+      <%= f.label :sex, '男性', {class: "control-label mr-1"} %>
+      <%= f.radio_button :sex, User.sexes.key(0), {class: "control-label mr-5 mt-2"} %>
+      <%= f.label :sex, '女性', {class: "control-label mr-1"} %>
+      <%= f.radio_button :sex, User.sexes.key(1), {class: "control-label mt-2"} %>
+    </div>
+  </div>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>住まい</label>
+    <div class='col-lg-3 field'>
       <%= f.select :address, User.addresses.keys %>
     </div>
   </div>
-
-  <div class="field">
-    <label>コメント</label>
-    <div>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>コメント</label>
+    <div class='col-lg-3 field'>
       <%= f.text_area :introduction %>
     </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "変更を保存" %>
+  <div class='row justify-content-center'>
+    <%= f.submit "変更を保存", class: 'btn btn-warning btn-lg mt-5' %>
   </div>
 <% end %>
+
+</div>

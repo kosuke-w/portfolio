@@ -1,27 +1,29 @@
-<h1>質問・相談</h1>
+<div class='container mt-5 col-lg-8 mb-5 title pb-1'>
+  <h1 class='font main-text text-center'>Consult & Question</h1>
+</div>
 
-<div>
+<div class='container form-horizontal'>
   <%= form_with model: @post, url: posts_path, local:true do |f| %>
-  <div>
-    <label>タイトル</label>
-    <div>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>タイトル</label>
+    <div class='col-lg-3 field'>
       <%= f.text_field :title %>
     </div>
   </div>
-  <div>
-    <label>本文</label>
-    <div>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>本文</label>
+    <div class='col-lg-3 field'>
       <%= f.text_field :text %>
     </div>
   </div>
-  <div>
-    <label>画像を添付</label>
-    <div>
+  <div class='form-group row justify-content-center'>
+    <label class='col-lg-3 text-center'>画像を添付</label>
+    <div class='col-lg-3 field'>
       <%= f.attachment_field :image %>
     </div>
   </div>
-  <div>
-    <%= f.submit '投稿する' %>
+  <div class='row justify-content-center'>
+    <%= f.submit '投稿する', class: 'btn btn-warning btn-lg mt-5' %>
   </div>
   <% end %>
 </div>

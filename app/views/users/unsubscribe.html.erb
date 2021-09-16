@@ -1,7 +1,11 @@
-<h1>退会します</h1>
-<h1>よろしいですか？</h1>
+<div class='container mt-5 col-lg-8 mb-5 warn'>
+  <h4 class='font main-text text-center text-dark pt-5 pb-5'>
+    退会するとサービスが利用できなくなります<br>
+    よろしいですか？
+  </h4>
+</div>
 
-<div>
-  <%= link_to '退会しない', edit_user_path(@user.id), class: 'btn btn-primary mr-5' %>
-  <%= link_to '退会する', users_withdraw_path(@user.id), class: 'btn btn-danger' %>
+<div class='container d-flex justify-content-center'>
+  <%= link_to '退会しない', edit_user_path(@user.id), class: 'btn btn-warning mr-5' %>
+  <%= link_to '退会する', users_withdraw_path(@user.id), class: 'btn btn-danger ml-5' %>
 </div>

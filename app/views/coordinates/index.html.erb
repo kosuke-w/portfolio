@@ -1,20 +1,50 @@
-<h1>MY COORDINATES</h1>
-
-<% @coordinates.each do |coordinate| %>
-<div>
-  <%= link_to coordinate_path(coordinate.id) do %>
-    <h3>Coordinate <%= coordinate.id %></h3>
-  <% end %>
-  <% coordinate.registered_items.each do |registered_item| %>
-    <%= attachment_image_tag registered_item.item, :image, :fill, 100, 100 %>
-    <%= registered_item.item.name %>
-  <% end %>
-  <%= coordinate.season %>
-  <%= coordinate.comment %>
-
-  <%= form_with model: @record, url: records_path, local:true do |f| %>
-    <%= f.hidden_field :coordinate_id, :value => coordinate.id %>
-    <%= f.submit '今日着た' %>
-  <% end %>
+<div  class='container mt-5 col-lg-8 mb-5 d-flex justify-content-between title'>
+  <div></div>
+  <h1 class='font main-text text-center'>MY COORDINATES</h1>
+  <div>
+    <%= link_to 'Add coordinate', new_coordinate_path, class: 'btn btn-light text-dark font mt-3' %>
+  </div>
 </div>
-<% end %>
+
+<div class='container col-lg-6'>
+  <div class='d-flex flex-column'>
+    <% @coordinates.each do |coordinate| %>
+    <div class='d-flex flex-column'>
+      <div class='title'>
+        <%= link_to coordinate_path(coordinate.id) do %>
+          <h3 class='font text-center text-light'>Coordinate <%= coordinate.id %></h3>
+        <% end %>
+      </div>
+      <div class='row justify-content-center mt-3 mb-3'>
+        <% coordinate.registered_items.each do |registered_item| %>
+          <div class='mr-3 ml-3'>
+            <%= attachment_image_tag registered_item.item, :image, :fill, 100, 100 %>
+          </div>
+        <% end %>
+      </div>
+      <div class='d-flex justify-content-center'>
+        <div class='col-lg-8'>
+          <div class='row justify-content-center'>
+            <label class='col-lg-2 text-center label-color text-light'>season</label>
+            <div class='col-lg-3 field ml-5'>
+              <%= coordinate.season %>
+            </div>
+          </div>
+          <div class='row justify-content-center'>
+            <label class='col-lg-2 text-center label-color text-light'>comment</label>
+            <div class='col-lg-3 field ml-5'>
+              <%= coordinate.comment %>
+            </div>
+          </div>
+        </div>
+        <div class='col-lg-4'>
+          <%= form_with model: @record, url: records_path, local:true do |f| %>
+            <%= f.hidden_field :coordinate_id, :value => coordinate.id %>
+            <%= f.submit '今日着た', class: 'btn btn-warning mt-3' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

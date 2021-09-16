@@ -1,11 +1,27 @@
-<hi>MY ITEMS</hi>
-
-<% @items.each do |item| %>
-<div>
-  <%= link_to item_path(item.id) do %>
-    <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: 'noImage.jpg', size:'300x300' %>
-  <% end %>
-  <%= item.name %>
-  <%= item.genre %>
+<div class='container mt-5 col-lg-8 mb-5 d-flex justify-content-between title'>
+  <div></div>
+  <h1 class='font main-text text-center'>MY ITEMS</h1>
+  <div>
+    <%= link_to 'Add item', new_item_path, class: 'btn btn-light text-dark font mt-3' %>
+  </div>
 </div>
-<% end %>
+
+<div class='container col-lg-8'>
+  <div class='d-flex flex-wrap'>
+    <% @items.each do |item| %>
+    <div class='d-flex flex-column justify-content-center mr-3 mb-5 ml-3'>
+      <div>
+        <%= link_to item_path(item.id) do %>
+          <%= attachment_image_tag item, :image, :fill, 100, 100, fallback: 'noImage.jpg', size:'300x300' %>
+        <% end %>
+      </div>
+      <div class='mx-auto'>
+        <%= item.name %>
+      </div>
+      <div class='mx-auto'>
+        <%= item.genre %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,33 +1,45 @@
-<h1>MY COORDINATE</h1>
-<h3>コーディネート詳細</h3>
+<div class='container mt-5 col-lg-8 mb-5 title pb-1'>
+  <h1 class='font main-text text-center'>MY COORDINATE</h1>
+  <h4 class='font text-center text-light'>コーディネート詳細</h4>
+</div>
 
-<div>
-  <label>登録アイテム</label>
+<div class='container'>
+  <h4 class='font text-center text-light title col-lg-8 container'>登録アイテム</h4>
   <div>
-    <% @coordinate.registered_items.each do |registered_item| %>
-      <%= link_to item_path(registered_item.item.id) do %>
-        <%= attachment_image_tag registered_item.item, :image, :fill, 100, 100 %>
+    <div class='row justify-content-center mt-3 mb-3'>
+      <% @coordinate.registered_items.each do |registered_item| %>
+      <div class='d-flex flex-column'>
+        <div>
+          <%= link_to item_path(registered_item.item.id) do %>
+            <div class='mr-3 ml-3'>
+              <%= attachment_image_tag registered_item.item, :image, :fill, 100, 100 %>
+            </div>
+          <% end %>
+        </div>
+        <div class='text-center'>
+          <%= registered_item.item.name %>
+        </div>
+      </div>
       <% end %>
-      <%= registered_item.item.name %>
-    <% end %>
+    </div>
   </div>
 </div>
 
-<div>
-  <div>
-    <label>シーズン</label>
-    <div>
+<div class='container col-lg-6 mt-5'>
+  <div class='row justify-content-center'>
+    <label class='col-lg-2 text-center label-color text-light'>season</label>
+    <div class='col-lg-3 field ml-5'>
       <%= @coordinate.season %>
     </div>
   </div>
-  <div>
-    <label>コメント</label>
-    <div>
+  <div class='row justify-content-center'>
+    <label class='col-lg-2 text-center label-color text-light'>comment</label>
+    <div class='col-lg-3 field ml-5'>
       <%= @coordinate.comment %>
     </div>
   </div>
-  <div>
-    <%= link_to '編集する', edit_coordinate_path(@coordinate.id) %>
-    <%= link_to '削除する', coordinate_path(@coordinate.id), method: :delete, class:'btn', data: { confirm: '削除しますか？' } %>
+  <div class='container col-lg-6 mt-5 text-center'>
+    <%= link_to '編集する', edit_coordinate_path(@coordinate.id), class:'btn btn-warning mr-5' %>
+    <%= link_to '削除する', coordinate_path(@coordinate.id), method: :delete, class:'btn btn-danger', data: { confirm: '削除しますか？' } %>
   </div>
 </div>

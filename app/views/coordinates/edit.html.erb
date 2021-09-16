@@ -1,24 +1,40 @@
-<h1>MY COORDINATE</h1>
-<h3>コーディネート編集</h3>
+<div class='container mt-5 col-lg-8 mb-5 title pb-1'>
+  <h1 class='font main-text text-center'>MY COORDINATE</h1>
+  <h4 class='font text-center text-light'>コーディネート編集</h4>
+</div>
 
-<%= form_with model: @coordinate, method: :patch, url: coordinate_path(@coordinate.id), local:true do |f| %>
-  <% @items.each do |item| %>
-    <%= attachment_image_tag item, :image, :fill, 100, 100 %>
-    <%= f.check_box :item_ids, { multiple: true, include_hidden: false}, item[:id] %>
+<div class='container'>
+  <%= form_with model: @coordinate, method: :patch, url: coordinate_path(@coordinate.id), local:true do |f| %>
+  <div class='d-flex flex-wrap'>
+    <% @items.each do |item| %>
+    <div class='d-flex flex-column mr-3 ml-3'>
+      <div>
+        <%= attachment_image_tag item, :image, :fill, 100, 100 %>
+      </div>
+      <div class='row justify-content-center mt-3'>
+        <%= f.check_box :item_ids, { multiple: true, include_hidden: false}, item[:id] %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div class='container mt-5'>
+    <div class='row justify-content-center'>
+      <label class='col-lg-2 text-center label-color text-light'>season</label>
+      <div class='col-lg-3 field ml-5'>
+        <%= f.select :season, Coordinate.seasons.keys %>
+      </div>
+    </div>
+    <div class='row justify-content-center'>
+      <label class='col-lg-2 text-center label-color text-light pt-2'>comment</label>
+      <div class='col-lg-3 field ml-5'>
+        <%= f.text_area :comment %>
+      </div>
+    </div>
+  </div>
+
+  <div class='row justify-content-center mt-5'>
+    <%= f.submit '変更を保存', class: 'btn btn-warning btn-lg' %>
+  </div>
   <% end %>
-
-<div>
-  <label>シーズン</label>
-  <div>
-    <%= f.select :season, Coordinate.seasons.keys %>
-  </div>
 </div>
-
-<div>
-  <label>コメント</label>
-  <div>
-    <%= f.text_area :comment %>
-  </div>
-</div>
-<%= f.submit '変更を保存' %>
-<% end %>

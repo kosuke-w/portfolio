@@ -1,70 +1,65 @@
-<h1>MY ITEM</h1>
-
-<div>
-  <%= attachment_image_tag @item, :image, :fill, 200, 200, fallback: 'noImage.jpg', size:'300x300' %>
+<div class='container mt-5 col-lg-8 mb-5 title pb-1'>
+  <h1 class='font main-text text-center'>MY ITEM</h1>
 </div>
-<div>
-  <div>
-    <label>アイテム名</label>
-    <div>
-      <%= @item.name %>
-    </div>
+
+<div class='container mt-5 d-flex'>
+  <div class='container col-lg-4 ml-5'>
+    <%= attachment_image_tag @item, :image, :fill, 200, 200, fallback: 'noImage.jpg', size:'300x300' %>
   </div>
-  <div>
-    <label>ジャンル</label>
-    <div>
-      <%= @item.genre %>
+
+  <div class='container form-horizontal'>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-2 text-center label-color text-light'>アイテム名</label>
+      <div class='col-lg-4 field'>
+        <%= @item.name %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>カラー</label>
-    <div>
-      <%= @item.color %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-2 text-center label-color text-light'>ジャンル</label>
+      <div class='col-lg-4 field'>
+        <%= @item.genre %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>購入時価格</label>
-    <div>
-      <% if @item.price.blank? %>
-        <P>未設定</P>
-      <% else %>
-        <%= @item.price.to_s(:delimited) %>
-      <% end %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-2 text-center label-color text-light'>カラー</label>
+      <div class='col-lg-4 field'>
+        <%= @item.color %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>ブランド名</label>
-    <div>
-      <% if @item.brand.blank? %>
-        <P>未設定</P>
-      <% else %>
-        <%= @item.brand %>
-      <% end %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-2 text-center label-color text-light'>購入時価格</label>
+      <div class='col-lg-4 field'>
+        <% if @item.price.blank? %>
+          <P>未設定</P>
+        <% else %>
+          <%= @item.price.to_s(:delimited) %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>コメント</label>
-    <div>
-      <% if @item.caption.blank? %>
-        <P>未設定</P>
-      <% else %>
-        <%= @item.caption %>
-      <% end %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-2 text-center label-color text-light'>ブランド名</label>
+      <div class='col-lg-4 field'>
+        <% if @item.brand.blank? %>
+          <P>未設定</P>
+        <% else %>
+          <%= @item.brand %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>最終着用日</label>
-    <div>
-      <% if @item.last_worn_day.blank? %>
-        <P>まだ着ていません</P>
-      <% else %>
-        <%= @item.last_worn_day %>
-      <% end %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-2 text-center label-color text-light'>コメント</label>
+      <div class='col-lg-4 field'>
+        <% if @item.caption.blank? %>
+          <P>未設定</P>
+        <% else %>
+          <%= @item.caption %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<div>
-  <%= link_to '編集する', edit_item_path(@item.id), class:'btn' %>
-  <%= link_to '削除する', item_path(@item.id), method: :delete, class:'btn', data: { confirm: '削除しますか？' } %>
+<div class='container col-lg-6 mt-5 text-center'>
+  <%= link_to '編集する', edit_item_path(@item.id), class:'btn btn-warning mr-5' %>
+  <%= link_to '削除する', item_path(@item.id), method: :delete, class:'btn btn-danger', data: { confirm: '削除しますか？' } %>
 </div>

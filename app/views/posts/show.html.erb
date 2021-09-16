@@ -1,32 +1,60 @@
-<h1>質問・相談</h1>
-
-<div>
-  <%= @post.title %>
-  <%= @post.user.name %>
-  <%= @post.user.sex %>
-  <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-  <%= attachment_image_tag @post, :image, :fill, 100, 100 %>
-  <%= @post.text %>
-  <% if @post.user == current_user %>
-    <%= link_to '削除する', post_path(@post.id), 'data-confirm' => '本当に削除しますか？' %>
-  <% end %>
+<div class='container mt-5 col-lg-8 mb-5 title pb-1'>
+  <h1 class='font main-text text-center'>Consult & Question</h1>
 </div>
 
-<div>
-  <% @post_comments.each do |post_comment| %>
-    <%= post_comment.user.name %>
-    <%= post_comment.user.sex %>
-    <%= post_comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-    <%= post_comment.comment %>
-    <% if post_comment.user == current_user %>
-      <%= link_to '削除する', post_post_comment_path(post_comment.id), 'data-confirm' => '本当に削除しますか？' %>
+<div class='container d-flex flex-column post pl-4 border border-primary border-5'>
+  <div class='row'>
+    <label class='font mt-1 mr-2'>Title:</label><h5 class='mt-1'><%= @post.title %></h5>
+  </div>
+  <div class='row d-flex'>
+    <div class='mr-3'><%= @post.user.name %></div>
+    <div class='mr-3'><%= @post.user.sex %></div>
+    <div><%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %></div>
+  </div>
+  <div class='row d-flex'>
+    <div class='flex-grow-1'>
+      <%= @post.text %>
+    </div>
+    <div>
+      <%= attachment_image_tag @post, :image, :fill, 100, 100 %>
+    </div>
+  </div>
+  <div class='mt-2 mb-2 ml-auto'>
+    <% if @post.user == current_user %>
+      <%= link_to '削除する', post_path(@post.id), class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
     <% end %>
+  </div>
+</div>
+
+<div class='container col-lg-10'>
+  <% @post_comments.each do |post_comment| %>
+  <div class='container d-flex flex-column post-comment mt-5 rounded-pill border border-primary border-5 pt-3 pl-3'>
+    <div class='d-flex'>
+      <label class='font'>User:</label><%= post_comment.user.name %>
+      <label class='font ml-3'>Sex:</label><%= post_comment.user.sex %>
+      <label class='font ml-3'>Replyed:</label><%= post_comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+    </div>
+    <div class='row ml-3 mb-3'>
+      <%= post_comment.comment %>
+    </div>
+    <div class='mt-2 mb-2 ml-auto mr-5'>
+      <% if post_comment.user == current_user %>
+        <%= link_to '削除する', post_post_comment_path(post_comment.id), class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
+      <% end %>
+    </div>
+  </div>
   <% end %>
 </div>
 
-<div>
+<div class='container mt-5'>
   <%= form_with(model:[@post, @post_comment], local:true) do |f| %>
-    <%= f.text_field :comment %>
-    <%= f.submit 'コメントする' %>
+  <div class='d-flex flex-column'>
+    <div class='row justify-content-center mt-5'>
+      <%= f.text_field :comment, class: 'form-control form-control-lg col-lg-6', :placeholder => 'コメントを入力' %>
+    </div>
+    <div class='row justify-content-center'>
+      <%= f.submit 'コメントする', class: 'btn btn-warning btn-lg mt-5' %>
+    </div>
+  </div>
   <% end %>
 </div>

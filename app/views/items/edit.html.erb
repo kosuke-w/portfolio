@@ -1,49 +1,55 @@
-<h1>MY ITEMS</h1>
-<h3>アイテム情報の編集</h3>
+<div class='container mt-5 col-lg-8 mb-5 title pb-1'>
+  <h1 class='font main-text text-center'>MY ITEMS</h1>
+  <h4 class='font text-center text-light'>アイテム情報の編集</h4>
+</div>
 
-<%= form_with model: @item, method: :patch, url: item_path(@item.id), local:true do |f| %>
-  <div>
-    <label>アイテム画像</label>
-    <div>
-      <%= f.attachment_field :image %>
+<div class='container form-horizontal'>
+  <%= form_with model: @item, method: :patch, url: item_path(@item.id), local:true do |f| %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-3 text-center'>アイテム画像</label>
+      <div class='col-lg-3 field'>
+        <%= f.attachment_field :image %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>アイテム名</label>
-    <div>
-      <%= f.text_field :name %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-3 text-center'>アイテム名</label>
+      <div class='col-lg-3 field'>
+        <%= f.text_field :name %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>ジャンル</label>
-    <div>
-      <%= f.select :genre, Item.genres.keys %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-3 text-center'>ジャンル</label>
+      <div class='col-lg-3 field'>
+        <%= f.select :genre, Item.genres.keys %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>カラー</label>
-    <div>
-      <%= f.select :color, Item.colors.keys %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-3 text-center'>カラー</label>
+      <div class='col-lg-3 field'>
+        <%= f.select :color, Item.colors.keys %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>購入時価格</label>
-    <div>
-      <%= f.text_field :price %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-3 text-center'>購入時価格</label>
+      <div class='col-lg-3 field'>
+        <%= f.text_field :price %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>ブランド名</label>
-    <div>
-      <%= f.text_field :brand %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-3 text-center'>ブランド名</label>
+      <div class='col-lg-3 field'>
+        <%= f.text_field :brand %>
+      </div>
     </div>
-  </div>
-  <div>
-    <label>コメント</label>
-    <div>
-      <%= f.text_area :caption %>
+    <div class='form-group row justify-content-center'>
+      <label class='col-lg-3 text-center'>コメント</label>
+      <div class='col-lg-3 field'>
+        <%= f.text_area :caption %>
+      </div>
     </div>
-  </div>
+    <div class='row justify-content-center'>
+      <%= f.submit '変更を保存', class: 'btn btn-warning btn-lg mt-5' %>
+    </div>
 
-  <%= f.submit '変更を保存' %>
-<% end %>
+  <% end %>
+</div>

@@ -1,14 +1,34 @@
-<h1>質問・相談</h1>
+<div  class='container mt-5 col-lg-8 mb-5 d-flex justify-content-between title'>
+  <div></div>
+  <h1 class='font main-text text-center'>Consults & Questions</h1>
+  <div>
+    <%= link_to 'to consult', new_post_path, class: 'btn btn-light text-dark font mt-3' %>
+  </div>
+</div>
 
-<div>
+
+<div class='container col-lg-10'>
   <% @posts.each do |post_text| %>
-    <div>
-      <%= link_to post_path(post_text.id) do %>
-        <%= post_text.title %>
-      <% end %>
-      <%= post_text.user.name %>
-      <%= attachment_image_tag post_text, :image, :fill, 30, 30 %>
-      <%= post_text.text %>
+    <div class='container d-flex flex-column post border border-primary border-5'>
+      <div class='row'>
+        <div class='d-flex ml-3'>
+          <label class='font mt-1 mr-2'>Title:</label>
+          <%= link_to post_path(post_text.id) do %>
+            <h4><%= post_text.title %></h4>
+          <% end %>
+        </div>
+
+        <div class='ml-5'>
+          <label class='font mt-1 mr-2'>User:</label><%= post_text.user.name %>
+        </div>
+      </div>
+      <div class='row ml-3 mb-3'>
+        <%= post_text.text %>
+      </div>
+      <div class='row ml-auto mr-1 mb-1'>
+        <label class='font'>Comment:</label><%= post_text.post_comments.count %>
+      </div>
+
     </div>
   <% end %>
 </div>
