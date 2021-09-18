@@ -1,6 +1,41 @@
-<div class='container main-image'>
+<div class='main-image'>
   <div class='main-opacity d-flex align-items-center justify-content-center flex-column'>
     <h1 class='font main-text'>Easy Fashion</h1>
     <p class='text-light'>あなたの服選びを、より気軽に</p>
+  </div>
+</div>
+
+<div class='container mb-5'>
+  <div class='container mt-3 mb-3 text-center'><h1 class='font text-dark'>Easy Fashionでできること</h1></div>
+  <div class='container d-flex justify-content-center'>
+    <div class='flex-column img1'>
+      <div class='cover sub'>
+        <h3 class='font text-light text-center'>Manage items</h3>
+      </div>
+      <p>クローゼットにある服の管理ができます。</p>
+    </div>
+    <div class='flex-column img2 mr-5 ml-5'>
+      <div class='cover sub'>
+        <h3 class='font text-light text-center'>Free coordinate</h3>
+      </div>
+      <p>コーディネートを登録し、<br>シーズンごとに確認できます。</p>
+    </div>
+    <div class='flex-column img3'>
+      <div class='cover sub'>
+        <h3 class='font text-light text-center'>Consult</h3>
+      </div>
+      <p>アドバイスや意見を<br>取り入れることができます。</p>
+    </div>
+  </div>
+</div>
+
+<div class='container d-flex justify-content-center form'>
+  <div class='container sign-btn'>
+    <div class='text-center'><strong>会員登録はこちらから</strong></div>
+    <div class='d-flex justify-content-center mt-3'><%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary font' %></div>
+  </div>
+  <div class='container sign-btn'>
+    <div class='text-center'><strong>会員の方はこちらからログイン</strong></div>
+    <div class='d-flex justify-content-center mt-3'><%= link_to 'Log in', new_user_session_path, class: 'btn btn-primary font' %></div>
   </div>
 </div>

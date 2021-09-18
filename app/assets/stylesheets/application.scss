@@ -27,24 +27,63 @@ body {
 }
 
 .main-image {
- margin-top: 70px;
- width: 50%;
- height: 500px;
+ width: 100%;
  background-image: url(main.jpg);
  background-size: cover;
  background-position: center;
 }
 
 .main-opacity {
- margin-top: 70px;
- width: 103%;
- height: 500px;
+ width: 100%;
+ height: 600px;
  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .main-text {
  color: #fff;
  font-size: 50px;
+}
+
+.img1 {
+ background-image: url(items.jpg);
+ background-size: cover;
+ background-position: center;
+ width: 30%;
+}
+
+.img2 {
+ background-image: url(coordinate.jpg);
+ background-size: cover;
+ background-position: center;
+ width: 30%;
+}
+
+.img3 {
+ background-image: url(consult.jpg);
+ background-size: cover;
+ background-position: center;
+ width: 30%;
+}
+
+.cover {
+ background-color: rgba(0, 0, 0, 0.5);
+ width: 100%;
+ height: 100%;
+}
+
+.sub {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.form {
+ margin-top: 5%;
+ margin-bottom: 20%;
+}
+
+.sign-btn {
+ width: 25%;
 }
 
 header {
@@ -60,6 +99,7 @@ header {
  background-color: #b0c4de;
  height: 100%;
 }
+
 .title {
  height: 10%;
  background-color: #a9a9a9;
@@ -95,12 +135,15 @@ header {
 
 .popup-overlay{
  visibility: hidden;
- position: absolute;
- background: #f0f8ff;
- border: 3px solid #000080;
- width: 30%;
- height: 30%;
- left: 65%;
+	z-index: 1;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(51,51,51,0.3);
+	margin-top: 0px;
 }
 .popup-overlay.active{
  visibility: visible;
@@ -109,6 +152,17 @@ header {
 
 .popup-content {
  visibility: hidden;
+	z-index: 2;
+	display: block;
+	position: fixed;
+	top: 40%;
+	left: 25%;
+	width: 50%;
+	height: auto;
+	margin: auto;
+	padding: 10px 20px;
+	border: 2px solid #aaa;
+	background: #fff;
 }
 
 .popup-content.active {
@@ -120,7 +174,8 @@ header {
  right: 40%;
 }
 
-.choices {
- position: relative;
- margin: 10% auto;
+.box {
+ display: flex;
+ justify-content: center;
 }
+

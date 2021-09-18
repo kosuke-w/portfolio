@@ -6,7 +6,7 @@ class RecordsController < ApplicationController
       redirect_to my_page_user_path(current_user.id)
     else
       flash[:notice] = '既に登録しています'
-      redirect_tコンビニ用 my_page_user_path(current_user.id)
+      redirect_to my_page_user_path(current_user.id)
     end
   end
 

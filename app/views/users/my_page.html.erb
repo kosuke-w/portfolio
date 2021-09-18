@@ -44,12 +44,12 @@
           <% record.coordinate.registered_items.each do |registered_item| %>
             <% if registered_item.item.user.id == current_user.id %>
               <div class="popup-overlay">
-                <div class="popup-content">
-                  <div class='row'>
-                    <%= link_to '詳細画面', coordinate_path(registered_item.coordinate.id), class: 'btn btn-warning choices' %>
-                    <%= link_to '「今日着た」を解除', record_path(record.id), method: :delete, class: 'btn btn-danger choices', data: { confirm: '解除しますか？' } %>
+                <div class="popup-content  text-center">
+                  <div class='row box mb-5 mt-5'>
+                    <%= link_to '詳細画面', coordinate_path(registered_item.coordinate.id), class: 'btn btn-warning mr-5' %>
+                    <%= link_to '「今日着た」を解除', record_path(record.id), method: :delete, class: 'btn btn-danger ml-5', data: { confirm: '解除しますか？' } %>
                   </div>
-                  <p class="close btn btn-secondary">Close</p>
+                  <p class="close btn btn-secondary mr-3">Close</p>
                 </div>
               </div>
               <%= attachment_image_tag registered_item.item, :image, :fill, 30, 30, class: 'image' %>
