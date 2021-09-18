@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  def show
-    @user = User.find(current_user.id)
+  def my_page
+    @user = current_user
 
     @records = Record.all
 
@@ -16,18 +16,24 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to users_my_page_path(current_user.id)
+    if @user.update(user_params)
+      flash[:notice] = 'ユーザー情報を更新しました'
+      redirect_to my_page_user_path(current_user.id)
+    else
+      render :edit
+    end
   end
 
   def unsubscribe
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def withdraw
-    @user = current_user
-    @user.update(is_active: User.is_active.key(false))
+    user = User.find(params[:id])
+    user.update(is_active: User.is_actives.key(false))
+    binding.pry
     reset_session
+    flasf[:notice] = '退会しました'
     redirect_to root_path
   end
 

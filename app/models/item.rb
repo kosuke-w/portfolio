@@ -4,6 +4,11 @@ class Item < ApplicationRecord
   has_many :registered_items, dependent: :destroy
   has_many :coordinates, through: :registered_items
 
+  validates :name, presence: true
+  validates :genre, presence: true
+  validates :color, presence: true
+  validates :image_id, presence: true
+
   attachment :image
 
   enum genre: {

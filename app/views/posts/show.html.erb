@@ -15,13 +15,13 @@
     <div class='flex-grow-1'>
       <%= @post.text %>
     </div>
-    <div>
+    <div class='mr-3'>
       <%= attachment_image_tag @post, :image, :fill, 100, 100 %>
     </div>
   </div>
   <div class='mt-2 mb-2 ml-auto'>
     <% if @post.user == current_user %>
-      <%= link_to '削除する', post_path(@post.id), class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
+      <%= link_to '削除する', post_path(@post.id), method: :delete, class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
     <% end %>
   </div>
 </div>
@@ -39,14 +39,18 @@
     </div>
     <div class='mt-2 mb-2 ml-auto mr-5'>
       <% if post_comment.user == current_user %>
-        <%= link_to '削除する', post_post_comment_path(post_comment.id), class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
+        <%= link_to '削除する', post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
       <% end %>
     </div>
   </div>
   <% end %>
 </div>
 
-<div class='container mt-5'>
+<div class='container col-lg-6 mb-3 mt-3'>
+  <%= render 'layouts/error_messages', model: @post_comment %>
+</div>
+
+<div class='container col-lg-6 mt-5'>
   <%= form_with(model:[@post, @post_comment], local:true) do |f| %>
   <div class='d-flex flex-column'>
     <div class='row justify-content-center mt-5'>

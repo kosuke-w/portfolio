@@ -80,3 +80,47 @@ header {
 .warn {
  background-color: #f0e68c;
 }
+
+.alert {
+ color: red;
+ font-weight: bold;
+ background-color: #f5deb3;
+}
+
+.flash {
+ position: fixed;
+ margin-top: 60px;
+ margin-left: 45%;
+}
+
+.popup-overlay{
+ visibility: hidden;
+ position: absolute;
+ background: #f0f8ff;
+ border: 3px solid #000080;
+ width: 30%;
+ height: 30%;
+ left: 65%;
+}
+.popup-overlay.active{
+ visibility: visible;
+ text-align: center;
+}
+
+.popup-content {
+ visibility: hidden;
+}
+
+.popup-content.active {
+ visibility: visible;
+}
+
+.close {
+ position: relative;
+ right: 40%;
+}
+
+.choices {
+ position: relative;
+ margin: 10% auto;
+}

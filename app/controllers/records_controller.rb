@@ -1,9 +1,20 @@
 class RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
-    @record.start_time = Date.today
-    @record.save
-    redirect_to users_my_page_path(current_user.id)
+    @record.start_time = Time.current
+    if @record.save
+      redirect_to my_page_user_path(current_user.id)
+    else
+      flash[:notice] = '既に登録しています'
+      redirect_tコンビニ用 my_page_user_path(current_user.id)
+    end
+  end
+
+  def destroy
+    record = Record.find(params[:id])
+    record.destroy
+    flash[:notice] = '解除しました'
+    redirect_to my_page_user_path(current_user.id)
   end
 
   private

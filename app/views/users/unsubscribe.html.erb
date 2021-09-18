@@ -6,6 +6,6 @@
 </div>
 
 <div class='container d-flex justify-content-center'>
-  <%= link_to '退会しない', edit_user_path(@user.id), class: 'btn btn-warning mr-5' %>
-  <%= link_to '退会する', users_withdraw_path(@user.id), class: 'btn btn-danger ml-5' %>
+  <%= link_to '退会しない', my_page_user_path(@user.id), class: 'btn btn-warning mr-5' %>
+  <%= link_to '退会する', withdraw_user_path(@user.id), method: :patch, class: 'btn btn-danger ml-5' %>
 </div>

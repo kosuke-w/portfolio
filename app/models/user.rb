@@ -11,6 +11,11 @@ class User < ApplicationRecord
 
   attachment :image
 
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :sex, presence: true
+  validates :address, presence: true
+
   enum sex: {
     男性: 0, 女性: 1
   }, _prefix: true
@@ -29,5 +34,9 @@ class User < ApplicationRecord
     徳島県:36,香川県:37,愛媛県:38,高知県:39,
     福岡県:40,佐賀県:41,長崎県:42,熊本県:43,大分県:44,宮崎県:45,鹿児島県:46,沖縄県:47
   }, _prefix: true
+
+  def active_for_authentication?
+    super && (self.is_active === '有効')
+  end
 
 end

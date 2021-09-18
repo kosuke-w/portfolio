@@ -26,7 +26,7 @@
     </div>
     <div class='row justify-content-center mt-5'>
       <%= link_to '編集する', edit_user_path(@user.id), class: 'btn btn-warning mr-5' %>
-      <%= link_to '退会する', users_unsubscribe_path(@user.id), class: 'btn btn-danger' %>
+      <%= link_to '退会する', unsubscribe_user_path(@user.id), class: 'btn btn-danger' %>
     </div>
   </div>
 
@@ -40,9 +40,22 @@
       <%= month_calendar events: @records do |date, records| %>
         <%= date.day %>
         <% records.each do |record| %>
+        <div class='d-flex'>
           <% record.coordinate.registered_items.each do |registered_item| %>
-            <%= attachment_image_tag registered_item.item, :image, :fill, 30, 30 %>
+            <% if registered_item.item.user.id == current_user.id %>
+              <div class="popup-overlay">
+                <div class="popup-content">
+                  <div class='row'>
+                    <%= link_to '詳細画面', coordinate_path(registered_item.coordinate.id), class: 'btn btn-warning choices' %>
+                    <%= link_to '「今日着た」を解除', record_path(record.id), method: :delete, class: 'btn btn-danger choices', data: { confirm: '解除しますか？' } %>
+                  </div>
+                  <p class="close btn btn-secondary">Close</p>
+                </div>
+              </div>
+              <%= attachment_image_tag registered_item.item, :image, :fill, 30, 30, class: 'image' %>
+            <% end %>
           <% end %>
+        </div>
         <% end %>
       <% end %>
     </div>

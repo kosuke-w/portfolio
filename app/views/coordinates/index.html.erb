@@ -12,7 +12,7 @@
     <div class='d-flex flex-column'>
       <div class='title'>
         <%= link_to coordinate_path(coordinate.id) do %>
-          <h3 class='font text-center text-light'>Coordinate <%= coordinate.id %></h3>
+          <h3 class='font text-center text-light'><%= coordinate.name %></h3>
         <% end %>
       </div>
       <div class='row justify-content-center mt-3 mb-3'>

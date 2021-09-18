@@ -5,6 +5,9 @@ class Coordinate < ApplicationRecord
   has_many :items, through: :registered_items
   has_many :records, dependent: :destroy
 
+  validates :season, presence: true
+  validates :name, presence: true
+
   enum season: {
     春: 0, 夏: 1, 秋: 2, 冬: 3
   }

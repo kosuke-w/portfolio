@@ -18,19 +18,26 @@
             <%= image_tag 'logo.png', size: '100x100', class: 'ml-5' %>
           <% end %>
         </div>
+        <div class='text-light flash'>
+          <% if flash[:notice] %>
+            <p id='notice'>
+              <%= flash[:notice] %>
+            </p>
+          <% end %>
+        </div>
         <nav class='nav navbar navbar-expand-lg ml-auto'>
           <div class='row'>
             <% if user_signed_in? %>
             <ul class='navbar-nav'>
               <li>
-                <%= link_to users_my_page_path(current_user.id) do %>
-                  <%= attachment_image_tag current_user, :image, :fill, 50, 50, class: 'rounded-circle mr-3 shadow', fallback: 'noImage.jpg', size:'50x50' %>
+                <%= link_to my_page_user_path(current_user.id) do %>
+                  <%= attachment_image_tag current_user, :image, :fill, 50, 50, class: 'rounded-circle mr-3', fallback: 'noImage.jpg', size:'50x50' %>
                 <% end %>
               </li>
               <li><%= link_to "My item", items_path, class: 'nav-text nav-link text-dark btn btn-light ml-3' %></li>
               <li><%= link_to "My coorde", coordinates_path, class: 'nav-text nav-link text-dark btn btn-light ml-3' %></li>
               <li><%= link_to "Posts", posts_path, class: 'nav-text nav-link text-dark btn btn-light ml-3' %></li>
-              <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-text nav-link text-dark btn btn-light ml-3' %></li>
+              <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-text nav-link text-dark btn btn-light ml-3', data: { confirm: 'ログアウトしますか？' } %></li>
             </ul>
             <% else %>
             <ul class='navbar-nav'>

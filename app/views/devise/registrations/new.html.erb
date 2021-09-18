@@ -3,9 +3,13 @@
     <h1 class='font main-text text-dark text-center mb-5'>Sign up</h1>
   </div>
 
+  <div>
+    <%= render "devise/shared/error_messages", resource: resource %>
+  </div>
+
   <div class='form-area'>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_with model: @user, url: user_registration_path, local:true do |f| %>
+
     <div class='container pt-5 form-horizontal'>
       <div class="form-group row justify-content-center">
         <label class='control-label col-lg-4'>名前</label>
@@ -24,9 +28,9 @@
       <div class="form-group row justify-content-center">
         <label class='control-label col-lg-4'>性別</label>
         <div class="field col-lg-4">
-          <%= f.label :sex, '男性', {class: "control-label mr-1"} %>
-          <%= f.radio_button :sex, User.sexes.key(0), {class: "control-label mr-5 mt-2"} %>
-          <%= f.label :sex, '女性', {class: "control-label mr-1"} %>
+          <%= f.label :sex, '男性', {class: "control-label"} %>
+          <%= f.radio_button :sex, User.sexes.key(0), {class: "control-label mr-3 mt-2"} %>
+          <%= f.label :sex, '女性', {class: "control-label"} %>
           <%= f.radio_button :sex, User.sexes.key(1), {class: "control-label mt-2"} %>
         </div>
       </div>

@@ -4,7 +4,7 @@
   </div>
 
   <div class='container pt-5 form-horizontal'>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_with model: @user, url: user_session_path, local:true do |f| %>
       <div class="form-group row justify-content-center">
         <label class='control-label col-lg-2'>メールアドレス</label>
         <div>
