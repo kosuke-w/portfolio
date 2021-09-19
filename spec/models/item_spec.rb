@@ -18,10 +18,10 @@ RSpec.describe Item, "モデルに関するテスト", type: :model do
         expect(@item).to be_invalid
         expect(@item.errors[:name]).to include("を入力してください")
       end
-      it 'image_idが空白のときのエラーメッセージ' do
+      it 'imageが空白のときのエラーメッセージ' do
         @item.image_id = ''
         expect(@item).to be_invalid
-        expect(@item.errors[:image_id]).to include("を入力してください")
+        expect(@item.errors[:image]).to include("を入力してください")
       end
       it 'genreが空白のときのエラーメッセージ' do
         @item.genre = ''

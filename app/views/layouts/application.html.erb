@@ -15,7 +15,7 @@
       <div class='container-fluid col-lg-12 clearfix d-flex'>
         <div class='row'>
           <%= link_to root_path do %>
-            <%= image_tag 'logo.png', size: '100x100', class: 'ml-5' %>
+            <%= image_tag 'logo.png', size: '100x100', class: 'ml-5', :alt => 'top' %>
           <% end %>
         </div>
         <div class='text-light flash'>
@@ -31,7 +31,7 @@
             <ul class='navbar-nav'>
               <li>
                 <%= link_to my_page_user_path(current_user.id) do %>
-                  <%= attachment_image_tag current_user, :image, :fill, 50, 50, class: 'rounded-circle mr-3', fallback: 'noImage.jpg', size:'50x50' %>
+                  <%= attachment_image_tag current_user, :image, :fill, 50, 50, class: 'rounded-circle mr-3', data: {"turbolinks" => false}, :alt => 'icon', fallback: 'noImage.jpg', size:'50x50' %>
                 <% end %>
               </li>
               <li><%= link_to "My item", items_path, class: 'nav-text nav-link text-dark btn btn-light ml-3' %></li>

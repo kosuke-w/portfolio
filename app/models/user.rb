@@ -12,7 +12,7 @@ class User < ApplicationRecord
   attachment :image
 
   validates :name, presence: true
-  validates :email, presence: true
+  validates :email, uniqueness: true, presence: true
   validates :sex, presence: true
   validates :address, presence: true
 

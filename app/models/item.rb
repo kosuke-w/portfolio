@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :genre, presence: true
   validates :color, presence: true
-  validates :image_id, presence: true
+  validates :image, presence: true
 
   attachment :image
 

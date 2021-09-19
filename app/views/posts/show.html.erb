@@ -1,5 +1,5 @@
 <div class='container mt-5 col-lg-8 mb-5 title pb-1'>
-  <h1 class='font main-text text-center'>Consult & Question</h1>
+  <h1 class='font main-text text-center'>Consult & Ask</h1>
 </div>
 
 <div class='container d-flex flex-column post pl-4 border border-primary border-5'>
@@ -21,7 +21,7 @@
   </div>
   <div class='mt-2 mb-2 ml-auto'>
     <% if @post.user == current_user %>
-      <%= link_to '削除する', post_path(@post.id), method: :delete, class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
+      <%= link_to '投稿削除', post_path(@post.id), method: :delete, class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
     <% end %>
   </div>
 </div>
@@ -39,7 +39,7 @@
     </div>
     <div class='mt-2 mb-2 ml-auto mr-5'>
       <% if post_comment.user == current_user %>
-        <%= link_to '削除する', post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
+        <%= link_to 'コメント削除', post_post_comment_path(post_comment.post.id, post_comment.id), method: :delete, class: 'btn btn-light btn-sm text-dark', 'data-confirm' => '本当に削除しますか？' %>
       <% end %>
     </div>
   </div>

@@ -74,7 +74,7 @@ $(function () {
 
     const html =
       '<div class="weather__content--report">' +
-        '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
+        '<img src="https://openweathermap.org/img/w/' + icon + '.png" alt="wether">' +
         '<span class="weather__content--report-date">' + day + "</span>" +
         '<div class="weather__content--report-temp-max">' + '最高：' + Math.round(weather.daily[i].temp.max) + "℃</div>" +
         '<span class="weather__content--report-temp-min">' + '最低：' + Math.floor(weather.daily[i].temp.min) + "℃</span>" +
