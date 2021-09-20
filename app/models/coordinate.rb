@@ -7,6 +7,7 @@ class Coordinate < ApplicationRecord
 
   validates :season, presence: true
   validates :name, presence: true
+  validates :item_ids, presence: true
 
   enum season: {
     春: 0, 夏: 1, 秋: 2, 冬: 3

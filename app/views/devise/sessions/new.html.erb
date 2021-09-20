@@ -3,7 +3,7 @@
     <h1 class='font main-text text-dark mb-5'>Log in</h1>
   </div>
 
-  <div class='container pt-5 form-horizontal'>
+  <div class='container pt-5 form-horizontal mb-5'>
     <%= form_with model: @user, url: user_session_path, local:true do |f| %>
       <div class="form-group row justify-content-center">
         <label class='control-label col-lg-2'>メールアドレス</label>
@@ -33,5 +33,9 @@
         <%= f.submit "Log in", class: 'btn btn-primary mt-5 font' %>
       </div>
     <% end %>
+  </div>
+
+  <div class='container d-flex justify-content-center mt-5'>
+    <%= link_to '会員登録はこちらから', new_user_registration_path, class: 'font' %>
   </div>
 </div>

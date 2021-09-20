@@ -7,7 +7,7 @@
     <%= render "devise/shared/error_messages", resource: resource %>
   </div>
 
-  <div class='form-area'>
+  <div class='form-area mb-5'>
     <%= form_with model: @user, url: user_registration_path, local:true do |f| %>
 
     <div class='container pt-5 form-horizontal'>
@@ -61,5 +61,9 @@
       </div>
     </div>
     <% end %>
+  </div>
+
+  <div class='container d-flex justify-content-center mt-5'>
+    <%= link_to '会員の方はこちら', new_user_session_path, class: 'font' %>
   </div>
 </div>

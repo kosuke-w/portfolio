@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def my_page
     @user = current_user
-
     @records = Record.all
 
     gon.push({

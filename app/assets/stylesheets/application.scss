@@ -28,7 +28,7 @@ body {
 
 .main-image {
  width: 100%;
- background-image: url(main.jpg);
+ background-image: image-url("main.jpg");
  background-size: cover;
  background-position: center;
 }
@@ -45,21 +45,21 @@ body {
 }
 
 .img1 {
- background-image: url(items.jpg);
+ background-image: image-url("items.jpg");
  background-size: cover;
  background-position: center;
  width: 30%;
 }
 
 .img2 {
- background-image: url(coordinate.jpg);
+ background-image: image-url("coordinate.jpg");
  background-size: cover;
  background-position: center;
  width: 30%;
 }
 
 .img3 {
- background-image: url(consult.jpg);
+ background-image: image-url("consult.jpg");
  background-size: cover;
  background-position: center;
  width: 30%;
@@ -128,9 +128,9 @@ header {
 }
 
 .flash {
- position: fixed;
- margin-top: 60px;
- margin-left: 45%;
+ position: absolute;
+ top: 50%;
+ left: 45%;
 }
 
 .popup-overlay{
