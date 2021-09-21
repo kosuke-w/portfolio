@@ -41,5 +41,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-- O-DAN（オーダン） https://o-dan.net/ja/
-- パブリックドメインQ：著作権フリー画像素材集 https://publicdomainq.net/
+- O-DAN（オーダン）  https://o-dan.net/ja/
+- パブリックドメインQ：著作権フリー画像素材集  https://publicdomainq.net/
