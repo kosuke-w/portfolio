@@ -10,5 +10,4 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
     get records_new_url
     assert_response :success
   end
-
 end

@@ -4,14 +4,17 @@ require 'rails_helper'
 
 RSpec.describe Coordinate, 'Coordinateモデルのテスト', type: :model do
   before do
-    @coordinate = FactoryBot.create(:coordinate)
+    item = FactoryBot.create(:item)
+    @coordinate = FactoryBot.create(:coordinate, item_ids: item.id)
   end
+
   describe 'データ作成' do
     context '有効な内容の確認' do
       it '保存されるか' do
         expect(@coordinate).to be_valid
       end
     end
+
     context '無効な内容の確認' do
       it 'nameが空欄のときのエラーメッセージ' do
         @coordinate.name = ''
@@ -25,6 +28,7 @@ RSpec.describe Coordinate, 'Coordinateモデルのテスト', type: :model do
       end
     end
   end
+
   describe 'アソシエーションの確認' do
     context 'userモデルとの関係' do
       it 'N:1になっているか' do

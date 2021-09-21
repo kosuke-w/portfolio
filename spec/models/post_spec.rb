@@ -6,12 +6,14 @@ RSpec.describe Post, 'Postモデルのテスト', type: :model do
   before do
     @post = FactoryBot.create(:post)
   end
+
   describe 'データの作成' do
     context '有効な内容の確認' do
       it '保存されるか' do
         expect(@post).to be_valid
       end
     end
+
     context '無効な内容の確認' do
       it 'titleが空白の時のエラーメッセージ' do
         @post.title = ''
@@ -25,6 +27,7 @@ RSpec.describe Post, 'Postモデルのテスト', type: :model do
       end
     end
   end
+
   describe 'アソシエーションの確認' do
     context 'userモデルとの関係' do
       it 'N:1になっているか' do

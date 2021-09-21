@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_18_044426) do
+ActiveRecord::Schema.define(version: 2021_09_21_121625) do
 
   create_table "coordinates", force: :cascade do |t|
     t.integer "user_id"
@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 2021_09_18_044426) do
     t.integer "price"
     t.string "brand"
     t.string "caption"
-    t.integer "times_worn", default: 0
-    t.datetime "last_worn_day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,7 +76,6 @@ ActiveRecord::Schema.define(version: 2021_09_18_044426) do
     t.integer "sex"
     t.text "introduction"
     t.integer "address"
-    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

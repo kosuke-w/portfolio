@@ -6,12 +6,14 @@ RSpec.describe Item, "モデルに関するテスト", type: :model do
   before do
     @item = FactoryBot.create(:item)
   end
+
   describe '実際に保存してみる' do
     context '有効なデータのチェック' do
       it "有効な内容の場合は保存されるか" do
         expect(@item).to be_valid
       end
     end
+
     context '空白のバリデーションチェック' do
       it 'nameが空白のときのエラーメッセージ' do
         @item.name = ''
@@ -35,6 +37,7 @@ RSpec.describe Item, "モデルに関するテスト", type: :model do
       end
     end
   end
+
   describe 'アソシエーションのテスト' do
     context 'userモデルとの関係' do
       it 'N:1となっている' do

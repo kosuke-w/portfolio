@@ -1,5 +1,4 @@
 class Coordinate < ApplicationRecord
-
   belongs_to :user
   has_many :registered_items, dependent: :destroy
   has_many :items, through: :registered_items
@@ -10,7 +9,6 @@ class Coordinate < ApplicationRecord
   validates :item_ids, presence: true
 
   enum season: {
-    春: 0, 夏: 1, 秋: 2, 冬: 3
+    春: 0, 夏: 1, 秋: 2, 冬: 3,
   }
-
 end

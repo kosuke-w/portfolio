@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
-    @record.start_time = Time.current
+    @record.start_time = Date.today
     if @record.save
       redirect_to my_page_user_path(current_user.id)
     else
@@ -18,8 +18,8 @@ class RecordsController < ApplicationController
   end
 
   private
+
   def record_params
     params.require(:record).permit(:coordinate_id, :start_time)
   end
-
 end

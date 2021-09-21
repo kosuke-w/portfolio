@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-
   belongs_to :user
   has_many :post_comments, dependent: :destroy
 
@@ -7,5 +6,4 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :text, presence: true
-
 end

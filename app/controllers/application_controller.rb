@@ -6,11 +6,9 @@ class ApplicationController < ActionController::Base
     my_page_user_path(resource.id)
   end
 
-
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :sex, :address])
   end
-
 end

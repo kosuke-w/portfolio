@@ -20,5 +20,4 @@ class CoordinatesControllerTest < ActionDispatch::IntegrationTest
     get coordinates_show_url
     assert_response :success
   end
-
 end

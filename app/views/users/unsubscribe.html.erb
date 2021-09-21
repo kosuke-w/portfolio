@@ -1,11 +1,10 @@
 <div class='container mt-5 col-lg-8 mb-5 warn'>
   <h4 class='font main-text text-center text-dark pt-5 pb-5'>
-    退会するとサービスが利用できなくなります<br>
-    よろしいですか？
+    退会すると登録したアイテムなどが<br>すべて削除されます。<br>よろしいですか？
   </h4>
 </div>
 
 <div class='container d-flex justify-content-center'>
-  <%= link_to '退会しない', my_page_user_path(@user.id), class: 'btn btn-warning mr-5' %>
-  <%= link_to '退会する', withdraw_user_path(@user.id), method: :patch, class: 'btn btn-danger ml-5' %>
+  <%= link_to '退会しない', my_page_user_path(@user.id), data: {"turbolinks" => false}, class: 'btn btn-warning mr-5' %>
+  <%= link_to '退会する', user_path(@user.id), method: :delete, class: 'btn btn-danger ml-5' %>
 </div>

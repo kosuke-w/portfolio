@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.where(user_id: current_user.id)
+    @items = Item.where(user_id: current_user.id).page(params[:page]).per(10)
   end
 
   def show
@@ -44,8 +44,8 @@ class ItemsController < ApplicationController
   end
 
   private
-  def item_params
-    params.require(:item).permit(:user_id, :name, :image, :genre, :color, :price, :brand, :caption, :times_worn, :last_worn_day)
-  end
 
+  def item_params
+    params.require(:item).permit(:user_id, :name, :image, :genre, :color, :price, :brand, :caption)
+  end
 end

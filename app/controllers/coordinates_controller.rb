@@ -1,5 +1,4 @@
 class CoordinatesController < ApplicationController
-
   def new
     @items = Item.where(user_id: current_user.id)
     @coordinate = Coordinate.new
@@ -18,7 +17,7 @@ class CoordinatesController < ApplicationController
   end
 
   def index
-    @coordinates = Coordinate.where(user_id: current_user.id)
+    @coordinates = Coordinate.where(user_id: current_user.id).page(params[:page]).per(5)
     @record = Record.new
   end
 
@@ -50,8 +49,8 @@ class CoordinatesController < ApplicationController
   end
 
   private
-  def coordinate_params
-    params.require(:coordinate).permit(:user_id, :name, :comment, :season, { :item_ids=> [] })
-  end
 
+  def coordinate_params
+    params.require(:coordinate).permit(:user_id, :name, :comment, :season, { :item_ids => [] })
+  end
 end

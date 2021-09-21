@@ -28,7 +28,9 @@
       <div class='row ml-auto mr-1 mb-1'>
         <label class='font'>Comment:</label><%= post_text.post_comments.count %>
       </div>
-
     </div>
   <% end %>
+  <div class='container mt-5 d-flex justify-content-center'>
+    <%= paginate @posts %>
+  </div>
 </div>

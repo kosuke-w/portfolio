@@ -14,10 +14,11 @@ describe 'ログイン後のテスト' do
   describe 'コーディネート機能のテスト' do
     before do
       @item = FactoryBot.create(:item, user: @user)
-      @coordinate = FactoryBot.create(:coordinate, user: @user)
+      @coordinate = FactoryBot.create(:coordinate, user: @user, item_ids: @item.id)
       @registered_item = FactoryBot.create(:registered_item, item: @item, coordinate: @coordinate)
       @other_user = FactoryBot.create(:user)
-      @other_coordinate = FactoryBot.create(:coordinate, user: @other_user)
+      @other_item = FactoryBot.create(:item, user: @other_user)
+      @other_coorde = FactoryBot.create(:coordinate, user: @other_user, item_ids: @other_item.id)
       visit coordinates_path
     end
 
@@ -35,7 +36,7 @@ describe 'ログイン後のテスト' do
         expect(page).to have_content @coordinate.comment
       end
       it '他人の登録アイテムが表示されない' do
-        expect(page).to_not have_content @other_coordinate.name
+        expect(page).not_to have_content @other_coorde.name
       end
       it '新規コーデ作成リンクが表示されている' do
         expect(page).to have_link 'Add coordinate'
@@ -60,10 +61,11 @@ describe 'ログイン後のテスト' do
       before do
         visit new_coordinate_path
         check 'coordinate_item_ids_' + @item.id.to_s
-        fill_in 'coordinate[name]', with:Faker::Lorem.characters(number:5)
+        fill_in 'coordinate[name]', with: Faker::Lorem.characters(number: 5)
         select '春', from: 'coordinate_season'
-        fill_in 'coordinate[comment]', with:Faker::Lorem.characters(number:10)
+        fill_in 'coordinate[comment]', with: Faker::Lorem.characters(number: 10)
       end
+
       it '正しく登録される' do
         expect { click_button '登録' }.to change(Coordinate.all, :count).by(1)
       end
@@ -78,6 +80,7 @@ describe 'ログイン後のテスト' do
         visit coordinates_path
         click_link @coordinate.name
       end
+
       it 'urlが正しい' do
         expect(current_path).to eq '/coordinates/' + @coordinate.id.to_s
       end
@@ -114,19 +117,20 @@ describe 'ログイン後のテスト' do
         @coordinate_old_name = @coordinate.name
         @coordinate_old_season = @coordinate.season
         @coordinate_old_comment = @coordinate.comment
-        fill_in 'coordinate[name]', with:Faker::Name.name
+        fill_in 'coordinate[name]', with: Faker::Name.name
         select '夏', from: 'coordinate_season'
-        fill_in 'coordinate[comment]', with:Faker::Lorem.characters(number:10)
+        fill_in 'coordinate[comment]', with: Faker::Lorem.characters(number: 10)
         click_button '変更を保存'
       end
+
       it 'nameが正しく変更される' do
-        expect(page).to_not eq @coordinate_old_name
+        expect(page).not_to eq @coordinate_old_name
       end
       it 'seasonが正しく変更される' do
-        expect(page).to_not eq @coordinate_old_season
+        expect(page).not_to eq @coordinate_old_season
       end
       it 'commentが正しく変更される' do
-        expect(page).to_not eq @coordinate_old_comment
+        expect(page).not_to eq @coordinate_old_comment
       end
     end
   end

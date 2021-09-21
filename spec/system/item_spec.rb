@@ -36,7 +36,7 @@ describe 'ログイン後のテスト' do
     end
   end
 
-  describe 'items画面の確認'
+  describe 'items画面の確認' do
     before do
       @item = FactoryBot.create(:item, user: @user)
       @other_user = FactoryBot.create(:user)
@@ -58,13 +58,13 @@ describe 'ログイン後のテスト' do
         expect(page).to have_content @item.name
       end
       it '他人の登録アイテムが表示されない' do
-        expect(page).to_not have_content @other_item.image
+        expect(page).not_to have_content @other_item.image
       end
       it '新規登録リンクが表示されている' do
         expect(page).to have_link 'Add item'
       end
     end
-    
+
     context 'リンクの確認' do
       it 'アイテム画像をクリックで詳細画面に遷移' do
         click_on 'item'
@@ -76,18 +76,19 @@ describe 'ログイン後のテスト' do
         expect(current_path).to eq '/items/new'
       end
     end
-    
+
     context '新規登録画面にてアイテム登録' do
       before do
         visit new_item_path
         attach_file 'item[image]', "#{Rails.root}/app/assets/images/test.png"
-        fill_in 'item[name]', with:Faker::Name.name
+        fill_in 'item[name]', with: Faker::Name.name
         select 'アウター', from: 'item_genre'
         select 'ベージュ', from: 'item_color'
-        fill_in 'item[price]', with:Faker::Number.number(digits: 5)
-        fill_in 'item[brand]', with:Faker::Lorem.characters(number:5)
-        fill_in 'item[caption]', with:Faker::Lorem.characters(number:10)
+        fill_in 'item[price]', with: Faker::Number.number(digits: 5)
+        fill_in 'item[brand]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'item[caption]', with: Faker::Lorem.characters(number: 10)
       end
+
       it '正しく登録される' do
         expect { click_button '登録' }.to change(Item.all, :count).by(1)
       end
@@ -96,12 +97,13 @@ describe 'ログイン後のテスト' do
         expect(current_path).to eq '/items'
       end
     end
-    
+
     context 'アイテム詳細画面の確認' do
       before do
         visit items_path
         click_on 'item'
       end
+
       it 'urlが正しい' do
         expect(current_path).to eq '/items/' + @item.id.to_s
       end
@@ -140,7 +142,7 @@ describe 'ログイン後のテスト' do
         expect { click_link '削除する' }.to change(Item.all, :count).by(-1)
       end
     end
-    
+
     context '編集機能の確認' do
       before do
         visit edit_item_path(@item.id)
@@ -152,17 +154,19 @@ describe 'ログイン後のテスト' do
         select 'ブルー', from: 'item_color'
         click_button '変更を保存'
       end
+
       it 'nameが正しく変更される' do
-        expect(page).to_not eq @item_old_name
+        expect(page).not_to eq @item_old_name
       end
       it 'genreが正しく変更される' do
-        expect(page).to_not eq @item_old_genre
+        expect(page).not_to eq @item_old_genre
       end
       it 'colorが正しく変更される' do
-        expect(page).to_not eq @item_old_color
+        expect(page).not_to eq @item_old_color
       end
       it '編集リンクが表示されている' do
         expect(page).to have_link '編集する'
       end
     end
+  end
 end

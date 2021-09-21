@@ -5,9 +5,9 @@ FactoryBot.define do
     genre { Faker::Number.between(from: 0, to: 5) }
     color { Faker::Number.between(from: 0, to: 9) }
     price { Faker::Number.number(digits: 5) }
-    brand { Faker::Lorem.characters(number:5) }
-    caption { Faker::Lorem.characters(number:10) }
-    
+    brand { Faker::Lorem.characters(number: 5) }
+    caption { Faker::Lorem.characters(number: 10) }
+
     association :user
   end
 end

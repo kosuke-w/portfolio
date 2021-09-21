@@ -20,5 +20,4 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
     get items_edit_url
     assert_response :success
   end
-
 end
