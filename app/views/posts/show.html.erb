@@ -2,7 +2,7 @@
   <h1 class='font main-text text-center'>Consult & Ask</h1>
 </div>
 
-<div class='container d-flex flex-column post pl-4 border border-primary border-5'>
+<div class='container d-flex flex-column window shadow pl-4 p-3 mb-5'>
   <div class='row'>
     <label class='font mt-1 mr-2'>Title:</label><h5 class='mt-1'><%= @post.title %></h5>
   </div>
@@ -12,7 +12,7 @@
     <div><%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %></div>
   </div>
   <div class='row d-flex'>
-    <div class='flex-grow-1'>
+    <div class='flex-grow-1 mt-3'>
       <%= @post.text %>
     </div>
     <div class='mr-3'>
@@ -28,7 +28,7 @@
 
 <div class='container col-lg-10'>
   <% @post_comments.each do |post_comment| %>
-  <div class='container d-flex flex-column post-comment mt-5 rounded-pill border border-primary border-5 pt-3 pl-3'>
+  <div class='container d-flex flex-column post-comment pt-3 pl-3 border-bottom border-dark'>
     <div class='d-flex'>
       <label class='font'>User:</label><%= post_comment.user.name %>
       <label class='font ml-3'>Sex:</label><%= post_comment.user.sex %>
@@ -50,7 +50,7 @@
   <%= render 'layouts/error_messages', model: @post_comment %>
 </div>
 
-<div class='container col-lg-6 mt-5'>
+<div class='container col-lg-6 mt-5 mb-5'>
   <%= form_with(model:[@post, @post_comment], local:true) do |f| %>
   <div class='d-flex flex-column'>
     <div class='row justify-content-center mt-5'>

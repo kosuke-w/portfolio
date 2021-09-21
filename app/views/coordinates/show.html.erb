@@ -11,7 +11,7 @@
       <div class='d-flex flex-column'>
         <div>
           <%= link_to item_path(registered_item.item.id) do %>
-            <div class='mr-3 ml-3'>
+            <div class='mr-3 ml-3 shadow mb-3'>
               <%= attachment_image_tag registered_item.item, :image, :fill, 100, 100 %>
             </div>
           <% end %>
@@ -27,19 +27,19 @@
 
 <div class='container col-lg-6 mt-5'>
   <div class='row justify-content-center'>
-    <label class='col-lg-2 text-center label-color text-light'>comment</label>
+    <label class='col-lg-2 text-center label-color text-light font'>coorde name</label>
     <div class='col-lg-3 field ml-5'>
       <%= @coordinate.name %>
     </div>
   </div>
   <div class='row justify-content-center'>
-    <label class='col-lg-2 text-center label-color text-light'>season</label>
+    <label class='col-lg-2 text-center label-color text-light font'>season</label>
     <div class='col-lg-3 field ml-5'>
       <%= @coordinate.season %>
     </div>
   </div>
   <div class='row justify-content-center'>
-    <label class='col-lg-2 text-center label-color text-light'>comment</label>
+    <label class='col-lg-2 text-center label-color text-light font'>comment</label>
     <div class='col-lg-3 field ml-5'>
       <%= @coordinate.comment %>
     </div>

@@ -9,7 +9,7 @@
 <div class='container col-lg-6'>
   <div class='d-flex flex-column'>
     <% @coordinates.each do |coordinate| %>
-    <div class='d-flex flex-column'>
+    <div class='d-flex flex-column window shadow mb-3'>
       <div class='title'>
         <%= link_to coordinate_path(coordinate.id) do %>
           <h3 class='font text-center text-light'><%= coordinate.name %></h3>
@@ -22,18 +22,22 @@
           </div>
         <% end %>
       </div>
-      <div class='d-flex justify-content-center'>
+      <div class='d-flex justify-content-center border-top'>
         <div class='col-lg-8'>
-          <div class='row justify-content-center'>
-            <label class='col-lg-2 text-center label-color text-light'>season</label>
+          <div class='row justify-content-center mt-2'>
+            <label class='col-lg-2 text-center label-color text-light font'>season</label>
             <div class='col-lg-3 field ml-5'>
               <%= coordinate.season %>
             </div>
           </div>
           <div class='row justify-content-center'>
-            <label class='col-lg-2 text-center label-color text-light'>comment</label>
+            <label class='col-lg-2 text-center label-color text-light font'>comment</label>
             <div class='col-lg-3 field ml-5'>
-              <%= coordinate.comment %>
+              <% if coordinate.comment.blank? %>
+                <P>未設定</P>
+              <% else %>
+                <%= coordinate.comment %>
+              <% end %>
             </div>
           </div>
         </div>

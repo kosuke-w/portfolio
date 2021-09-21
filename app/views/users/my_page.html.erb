@@ -1,5 +1,5 @@
 <div class='container col-lg-10 d-flex mt-5'>
-  <div class='container mr-5 profile pt-3 pb-5 col-lg-4'>
+  <div class='container mr-5 profile pt-3 pb-5 col-lg-4 shadow'>
     <div class='row justify-content-center mb-5'>
       <%= attachment_image_tag @user, :image, :fill, 100, 100, class: 'rounded-circle', fallback: 'noImage.jpg', size:'300x300' %>
     </div>
@@ -31,9 +31,9 @@
   </div>
 
   <div class='container ml-5'>
-    <div class="weather mb-3">
-      <h3 class="weather__title text-center">天気予報</h3>
-      <div class='d-inline-flex', id="weather"></div>
+    <div class="weather mb-3 window shadow">
+      <h3 class="weather__title text-center text-light title">天気予報</h3>
+      <div class='ml-4 d-inline-flex', id="weather"></div>
     </div>
 
     <div class='container'>

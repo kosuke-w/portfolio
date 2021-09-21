@@ -96,7 +96,7 @@ header {
 }
 
 .profile {
- background-color: #b0c4de;
+ background-color: #f0f8ff;
  height: 100%;
 }
 
@@ -107,10 +107,6 @@ header {
 
 .label-color {
  background-color: #a9a9a9;
-}
-
-.post {
- background-color: #f0f8ff;
 }
 
 .post-comment {
@@ -177,5 +173,9 @@ header {
 .box {
  display: flex;
  justify-content: center;
+}
+
+.window {
+ background-color: #ffffff;
 }
 
