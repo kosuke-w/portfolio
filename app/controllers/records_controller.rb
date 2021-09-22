@@ -1,7 +1,7 @@
 class RecordsController < ApplicationController
   def create
     @record = Record.new(record_params)
-    @record.start_time = Date.today
+    @record.start_time = Date.current
     if @record.save
       flash[:notice] = '登録しました'
       redirect_to my_page_user_path(current_user.id)
