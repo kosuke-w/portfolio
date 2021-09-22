@@ -3,6 +3,7 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.start_time = Date.today
     if @record.save
+      flash[:notice] = '登録しました'
       redirect_to my_page_user_path(current_user.id)
     else
       flash[:notice] = '既に登録しています'
