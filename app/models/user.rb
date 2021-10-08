@@ -3,6 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  def self.guest
+    find_or_create_by!(email: 'guest@guest.com') do |user|
+      user.password = SecureRandom.alphanumeric
+      user.password_confirmation = user.password
+      user.name = 'ゲスト'
+      user.address = 13
+      user.sex = 0
+    end
+  end
 
   has_many :items, dependent: :destroy
   has_many :coordinates, dependent: :destroy
