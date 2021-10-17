@@ -54,7 +54,7 @@
   <%= form_with(model:[@post, @post_comment], local:true) do |f| %>
   <div class='d-flex flex-column'>
     <div class='row justify-content-center mt-5'>
-      <%= f.text_field :comment, class: 'form-control form-control-lg col-lg-6', :placeholder => 'コメントを入力' %>
+      <%= f.text_area :comment, size: '20x5', class: 'form-control form-control-lg col-lg-6', :placeholder => 'コメントを入力' %>
     </div>
     <div class='row justify-content-center'>
       <%= f.submit 'コメントする', class: 'btn btn-warning btn-lg mt-5' %>
