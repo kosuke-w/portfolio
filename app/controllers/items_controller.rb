@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :check, only: [:edit]
+
   def new
     @item = Item.new
   end
@@ -44,6 +46,12 @@ class ItemsController < ApplicationController
   end
 
   private
+  def check
+    @item = Item.find(params[:id])
+    if @item.user != current_user
+      redirect_to items_path
+    end
+  end
 
   def item_params
     params.require(:item).permit(:user_id, :name, :image, :genre, :color, :price, :brand, :caption)
