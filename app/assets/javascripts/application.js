@@ -82,6 +82,7 @@ $(function () {
     return html;
   }
 
+  //画像クリック時のポップアップ
   $(function() {
     $('.image').on('click', function() {
       $('.popup-overlay, .popup-content').addClass('active');
